@@ -18,6 +18,8 @@
     }
 
     &__features {
+      margin-top: 20px;
+
       div {
         background: #fefefe;
         padding: 5px 10px;
@@ -27,5 +29,21 @@
         }
       }
     }
+  }
+
+  .new-feature {
+    border: none;
+    font-size: 16px;
+    margin-right: 20px;
+    padding: 10px 20px;
+  }
+
+  .button {
+    background: #4949df;
+    border: none;
+    color: #fefefe;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
   }
 }

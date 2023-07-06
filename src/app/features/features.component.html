@@ -4,11 +4,11 @@
   <div class="project">
     <h2 class="project__title">Project 1</h2>
 
+    <input class="new-feature" [(ngModel)]="newFeature" />
+    <button class="button" (click)="handleClick()">Add</button>
+
     <div class="project__features">
-      <div>Feature 1</div>
-      <div>Feature 1</div>
-      <div>Feature 1</div>
-      <div>Feature 1</div>
+      <div *ngFor="let feature of features">{{feature}}</div>
     </div>
 
   </div>

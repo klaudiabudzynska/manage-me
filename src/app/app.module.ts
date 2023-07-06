@@ -4,19 +4,21 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { TasksComponent } from './tasks/tasks.component';
+import { FeaturesComponent } from './features/features.component';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    TasksComponent,
+    FeaturesComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      {path: 'tasks-list', component: TasksComponent},
+      {path: 'features-list', component: FeaturesComponent},
     ]),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
