@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-features',
@@ -6,18 +7,55 @@ import { Component } from '@angular/core';
   styleUrls: ['./features.component.scss']
 })
 export class FeaturesComponent {
-  features: string[] = [
-    'Navigation links',
-    'User database',
-    'Components communication',
-    'Optimisation'
+  features: {name: string, tasks?: string[]}[] = [
+    {
+      name: 'Navigation links',
+      tasks: [
+        'abc',
+        'cbd',
+        'fdfsdf',
+        'fdsfsdfsd',
+      ]
+    },
+    {
+      name: 'User database',
+      tasks: [
+        'abc',
+        'fdfsdf',
+        'cbd',
+        'fdsfsdfsd',
+      ]
+    },
+    {
+      name: 'Components communication',
+      tasks: [
+        'fdsfsdfsd',
+        'abc',
+        'cbd',
+        'fdfsdf',
+      ]
+    },
+    {
+      name: 'Optimisation',
+      tasks: [
+        'abc',
+        'fdfsdf',
+        'fdsfsdfsd',
+        'cbd',
+      ]
+    }
   ];
   newFeature: string;
+  faChevronUp = faChevronUp;
 
-  handleClick() {
+  handleNewFeatureSave() {
     if (this.newFeature?.length > 0) {
-      this.features.push(this.newFeature);
+      this.features.push({name: this.newFeature});
       this.newFeature = '';
     }
   };
+
+  handleToggleFeature(feature: string) {
+
+  }
 }

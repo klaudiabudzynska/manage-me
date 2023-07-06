@@ -20,12 +20,21 @@
     &__features {
       margin-top: 20px;
 
-      div {
+      .feature {
         background: #fefefe;
         padding: 5px 10px;
 
         &:nth-child(even) {
           background: #dcdcdc;
+        }
+
+        &__data {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        &__toggle{
+          transform: rotate(90deg);
         }
       }
     }

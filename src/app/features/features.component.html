@@ -5,10 +5,20 @@
     <h2 class="project__title">Project 1</h2>
 
     <input class="new-feature" [(ngModel)]="newFeature" />
-    <button class="button" (click)="handleClick()">Add</button>
+    <button class="button" (click)="handleNewFeatureSave()">Add</button>
 
     <div class="project__features">
-      <div *ngFor="let feature of features">{{feature}}</div>
+      <div *ngFor="let feature of features" class="feature">
+        <div class="feature__data">
+          {{feature.name}}
+          <div>
+            <fa-icon class="feature__toggle" [icon]="faChevronUp" [rotate]="180" (click)="handleToggleFeature(feature.name)"></fa-icon>
+          </div>
+        </div>
+        <div *ngFor="let task of feature.tasks">
+          {{task}}
+        </div>
+      </div>
     </div>
 
   </div>
