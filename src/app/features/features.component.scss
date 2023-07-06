@@ -29,12 +29,17 @@
         }
 
         &__data {
+          cursor: pointer;
           display: flex;
           justify-content: space-between;
         }
 
         &__toggle{
           transform: rotate(90deg);
+        }
+
+        .tasks-hidden {
+          display: none;
         }
       }
     }

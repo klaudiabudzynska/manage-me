@@ -9,13 +9,13 @@
 
     <div class="project__features">
       <div *ngFor="let feature of features" class="feature">
-        <div class="feature__data">
+        <div class="feature__data" (click)="handleToggleFeature(feature.name)">
           {{feature.name}}
           <div>
-            <fa-icon class="feature__toggle" [icon]="faChevronUp" [rotate]="180" (click)="handleToggleFeature(feature.name)"></fa-icon>
+            <fa-icon class="feature__toggle" [icon]="faChevronUp" [rotate]="feature.expanded ? undefined : 180"></fa-icon>
           </div>
         </div>
-        <div *ngFor="let task of feature.tasks">
+        <div *ngFor="let task of feature.tasks" [ngClass]="{'tasks-hidden': !feature.expanded}">
           {{task}}
         </div>
       </div>

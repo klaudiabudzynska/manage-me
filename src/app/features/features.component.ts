@@ -7,9 +7,10 @@ import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./features.component.scss']
 })
 export class FeaturesComponent {
-  features: {name: string, tasks?: string[]}[] = [
+  features: {name: string, expanded: boolean, tasks?: string[]}[] = [
     {
       name: 'Navigation links',
+      expanded: false,
       tasks: [
         'abc',
         'cbd',
@@ -19,6 +20,7 @@ export class FeaturesComponent {
     },
     {
       name: 'User database',
+      expanded: false,
       tasks: [
         'abc',
         'fdfsdf',
@@ -28,6 +30,7 @@ export class FeaturesComponent {
     },
     {
       name: 'Components communication',
+      expanded: false,
       tasks: [
         'fdsfsdfsd',
         'abc',
@@ -37,6 +40,7 @@ export class FeaturesComponent {
     },
     {
       name: 'Optimisation',
+      expanded: false,
       tasks: [
         'abc',
         'fdfsdf',
@@ -50,12 +54,13 @@ export class FeaturesComponent {
 
   handleNewFeatureSave() {
     if (this.newFeature?.length > 0) {
-      this.features.push({name: this.newFeature});
+      this.features.push({name: this.newFeature, expanded: false});
       this.newFeature = '';
     }
   };
 
-  handleToggleFeature(feature: string) {
-
+  handleToggleFeature(featureName: string) {
+    const featureIndex = this.features.findIndex(globalFeature => globalFeature.name === featureName);
+    this.features[featureIndex].expanded = !this.features[featureIndex].expanded;
   }
 }
