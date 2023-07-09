@@ -6,18 +6,23 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FeaturesComponent } from './features/features.component';
 import { FormsModule } from "@angular/forms";
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TasksComponent } from './tasks/tasks.component';
+import { ContainerComponent } from './container/container.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     FeaturesComponent,
+    TasksComponent,
+    ContainerComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       {path: 'features-list', component: FeaturesComponent},
+      {path: 'tasks-list', component: TasksComponent},
     ]),
     FormsModule,
     FontAwesomeModule
