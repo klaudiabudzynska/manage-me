@@ -13,8 +13,8 @@ export class FeaturesComponent {
   updatedFeatureName: string;
   editedFeatureIndex: number = -1;
   faChevronUp = faChevronUp;
-  faTrash = faTrash;
-  faPen = faPen;
+  protected readonly faTrash = faTrash;
+  protected readonly faPen = faPen;
 
   handleNewFeatureSave() {
     if (this.newFeatureName?.length > 0) {

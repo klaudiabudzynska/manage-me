@@ -1,1 +1,8 @@
-<p>task works!</p>
+<app-container *ngIf="task" [title]="task.name">
+  <fa-icon class="operation" [icon]="faPen" (click)="handleEditStart()"></fa-icon>
+  <fa-icon class="operation" [icon]="faTrash" (click)="handleDelete()"></fa-icon>
+  <span class="task-status">{{status}}</span>
+  <p>{{task.description}}</p>
+</app-container>
+<app-container *ngIf="!task" title="NotFound">
+</app-container>
