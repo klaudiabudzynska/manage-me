@@ -4,7 +4,7 @@
       <h2>{{boardColumn.name}}</h2>
       <ng-container *ngFor="let task of tasks">
         <ng-container *ngIf="task.status === boardColumn.status">
-          <a class="task" href="{{'/task?id=' + task.id}}">
+          <a class="task" routerLink="/task" [queryParams]="{id: task.id}">
             <p class="task__name">{{task.name}}</p>
             <app-user-miniature></app-user-miniature>
           </a>

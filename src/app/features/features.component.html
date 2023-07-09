@@ -24,7 +24,7 @@
             <fa-icon class="feature__operation" [icon]="faChevronUp" [rotate]="feature.expanded ? undefined : 180"></fa-icon>
           </div>
         </div>
-        <a *ngFor="let task of feature.tasks" href="{{'/task?id=' + task.id}}" [ngClass]="{
+        <a *ngFor="let task of feature.tasks" routerLink="/task" [queryParams]="{id: task.id}" [ngClass]="{
           'feature-tasks': true,
           'feature-tasks--hidden': !feature.expanded
         }">
