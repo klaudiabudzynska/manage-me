@@ -8,7 +8,8 @@ import { FeaturesComponent } from './features/features.component';
 import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TasksComponent } from './tasks/tasks.component';
-import { ContainerComponent } from './container/container.component'
+import { ContainerComponent } from './container/container.component';
+import { TaskComponent } from './task/task.component'
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ContainerComponent } from './container/container.component'
     FeaturesComponent,
     TasksComponent,
     ContainerComponent,
+    TaskComponent,
   ],
   imports: [
     BrowserModule,

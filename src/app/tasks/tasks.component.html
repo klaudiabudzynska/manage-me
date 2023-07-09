@@ -4,14 +4,14 @@
       <h2>To Do</h2>
       <ng-container *ngFor="let task of tasks">
         <ng-container *ngIf="task.status === status.ToDo">
-          <div class="task">
+          <a class="task" href="{{'/task?id=' + task.id}}">
             <p class="task__name">{{task.name}}</p>
 
             <div class="user">
               <div class="profile-picture">JD</div>
               <p class="user-name">John Doe</p>
             </div>
-          </div>
+          </a>
         </ng-container>
       </ng-container>
     </div>
@@ -19,14 +19,14 @@
       <h2>Doing</h2>
       <ng-container *ngFor="let task of tasks">
         <ng-container *ngIf="task.status === status.Doing">
-          <div class="task">
+          <a class="task">
             <p class="task__name">{{task.name}}</p>
 
             <div class="user">
               <div class="profile-picture">JD</div>
               <p class="user-name">John Doe</p>
             </div>
-          </div>
+          </a>
         </ng-container>
       </ng-container>
     </div>
@@ -34,14 +34,14 @@
       <h2>Done</h2>
       <ng-container *ngFor="let task of tasks">
         <ng-container *ngIf="task.status === status.Done">
-          <div class="task">
+          <a class="task">
             <p class="task__name">{{task.name}}</p>
 
             <div class="user">
               <div class="profile-picture">JD</div>
               <p class="user-name">John Doe</p>
             </div>
-          </div>
+          </a>
         </ng-container>
       </ng-container>
     </div>

@@ -5,11 +5,13 @@ export enum STATUS {
 }
 
 interface Task {
+  id: number,
   name: string,
   status: STATUS,
 }
 
 interface Feature {
+  id: number,
   name: string,
   expanded: boolean,
   tasks?: Task[],
@@ -17,66 +19,82 @@ interface Feature {
 
 export const tasks = [
   {
+    id: 1,
     name: 'abc',
     status: STATUS.ToDo
   },
   {
+    id: 2,
     name: 'cbd',
     status: STATUS.Doing
   },
   {
+    id: 3,
     name: 'fdfsdf',
     status: STATUS.Done
   },
   {
+    id: 4,
     name: 'fdsfsdfsd',
     status: STATUS.ToDo,
   },
   {
+    id: 5,
     name: 'abc',
     status: STATUS.ToDo,
   },
   {
+    id: 6,
     name: 'cbd',
     status: STATUS.Done,
   },
   {
+    id: 7,
     name: 'fdfsdf',
     status: STATUS.ToDo,
   },
   {
+    id: 8,
     name: 'fdsfsdfsd',
     status: STATUS.Done,
   },
   {
+    id: 9,
     name: 'abc',
     status: STATUS.Done,
   },
   {
+    id: 10,
     name: 'cbd',
     status: STATUS.Done,
   },
   {
+    id: 11,
     name: 'fdfsdf',
     status: STATUS.Doing,
   },
   {
+    id: 12,
     name: 'fdsfsdfsd',
     status: STATUS.ToDo,
   },
   {
+    id: 13,
     name: 'abc',
     status: STATUS.Doing,
   },
   {
+    id: 14,
     name: 'cbd',
     status: STATUS.ToDo,
   },
   {
+    id: 15,
     name: 'fdfsdf',
     status: STATUS.Doing,
   },
   {
+    id: 16,
     name: 'fdsfsdfsd',
     status: STATUS.Done,
   },
@@ -84,6 +102,7 @@ export const tasks = [
 
 const projectData: Feature[] = [
   {
+    id: 1,
     name: 'Navigation links',
     expanded: false,
     tasks: [
@@ -94,6 +113,7 @@ const projectData: Feature[] = [
     ]
   },
   {
+    id: 2,
     name: 'User database',
     expanded: false,
     tasks: [
@@ -104,6 +124,7 @@ const projectData: Feature[] = [
     ]
   },
   {
+    id: 3,
     name: 'Components communication',
     expanded: false,
     tasks: [
@@ -114,6 +135,7 @@ const projectData: Feature[] = [
     ]
   },
   {
+    id: 4,
     name: 'Optimisation',
     expanded: false,
     tasks: [
@@ -134,7 +156,11 @@ export const deleteFeature = (featureIndex: number) => {
 }
 
 export const addNewFeature = (featureName: string) => {
-  projectData.push({name: featureName, expanded: false});
+  projectData.push({
+    id: new Date().getTime(),
+    name: featureName,
+    expanded: false
+  });
 }
 
 export const getProjectData = () => {
