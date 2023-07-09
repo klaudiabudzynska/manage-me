@@ -25,6 +25,7 @@ import { TaskComponent } from './task/task.component'
     RouterModule.forRoot([
       {path: 'features-list', component: FeaturesComponent},
       {path: 'tasks-list', component: TasksComponent},
+      {path: 'task', component: TaskComponent},
     ]),
     FormsModule,
     FontAwesomeModule

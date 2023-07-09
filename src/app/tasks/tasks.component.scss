@@ -1,5 +1,6 @@
 :host {
   width: 100%;
+  max-width: 1200px;
 }
 
 .board {
@@ -7,6 +8,7 @@
   justify-content: space-between;
 
   &__column {
+    color: #212225;
     background: #e3e3e3;
     padding: 10px 20px;
     max-height: 80vh;
@@ -15,9 +17,12 @@
   }
 
   .task {
+    color: #212225;
     background: #fefefe;
+    display: block;
     margin-bottom: 10px;
     padding: 15px 20px;
+    text-decoration: none;
 
     &__name {
       margin: 0 0 10px 0;

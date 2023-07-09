@@ -19,7 +19,7 @@
       <h2>Doing</h2>
       <ng-container *ngFor="let task of tasks">
         <ng-container *ngIf="task.status === status.Doing">
-          <a class="task">
+          <a class="task" href="{{'/task?id=' + task.id}}">
             <p class="task__name">{{task.name}}</p>
 
             <div class="user">
@@ -34,7 +34,7 @@
       <h2>Done</h2>
       <ng-container *ngFor="let task of tasks">
         <ng-container *ngIf="task.status === status.Done">
-          <a class="task">
+          <a class="task" href="{{'/task?id=' + task.id}}">
             <p class="task__name">{{task.name}}</p>
 
             <div class="user">

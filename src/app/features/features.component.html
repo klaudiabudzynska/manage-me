@@ -13,20 +13,25 @@
 
     <div class="project__features">
       <div *ngFor="let feature of features" class="feature">
-        <div class="feature__data" (click)="handleToggleFeature(feature.name)">
+        <div class="feature__data" (click)="handleToggleFeature(feature.id)">
           {{feature.name}}
           <div>
-            <fa-icon class="feature__operation" [icon]="faPen" (click)="handleEditStart(feature.name, $event)"></fa-icon>
-            <fa-icon class="feature__operation" [icon]="faTrash" (click)="handleDeleteStart(feature.name, $event)"></fa-icon>
+            <fa-icon class="feature__operation" [icon]="faPen" (click)="handleEditStart(feature.id, $event)"></fa-icon>
+            <fa-icon class="feature__operation" [icon]="faTrash" (click)="handleDeleteStart(feature.id, $event)"></fa-icon>
             <fa-icon class="feature__operation" [icon]="faChevronUp" [rotate]="feature.expanded ? undefined : 180"></fa-icon>
           </div>
         </div>
-        <div *ngFor="let task of feature.tasks" [ngClass]="{
+        <a *ngFor="let task of feature.tasks" href="{{'/task?id=' + task.id}}" [ngClass]="{
           'feature-tasks': true,
           'feature-tasks--hidden': !feature.expanded
         }">
           {{task.name}}
-        </div>
+
+          <div class="user">
+            <div class="profile-picture">JD</div>
+            <p class="user-name">John Doe</p>
+          </div>
+        </a>
       </div>
     </div>
 

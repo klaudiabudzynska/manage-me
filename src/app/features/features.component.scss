@@ -4,7 +4,9 @@
 
 .project {
   background: #aaa;
+  max-height: 80vh;
   padding: 20px;
+  overflow-y: auto;
 
   &__title {
     margin: 0 0 10px 0;
@@ -15,7 +17,7 @@
 
     .feature {
       background: #fefefe;
-      padding: 5px 10px;
+      padding: 5px 15px;
 
       &:nth-child(even) {
         background: #dcdcdc;
@@ -25,6 +27,7 @@
         cursor: pointer;
         display: flex;
         justify-content: space-between;
+        padding: 10px 0;
       }
 
       &__operation {
@@ -32,11 +35,38 @@
       }
 
       .feature-tasks {
+        align-items: center;
+        color: #212225;
         border-top: 1px solid #bfbfbf;
-        padding-left: 20px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        text-decoration: none;
 
         &--hidden {
           display: none;
+        }
+
+        .user {
+          align-items: center;
+          display: flex;
+
+          .profile-picture {
+            align-items: center;
+            color: #fefefe;
+            background: #84b061;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            font-size: 14px;
+            margin-right: 5px;
+            width: 30px;
+            height: 30px;
+          }
+
+          .user-name {
+            font-size: 13px;
+          }
         }
       }
     }

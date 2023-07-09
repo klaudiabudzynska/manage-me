@@ -151,7 +151,8 @@ export const editFeatureName = (featureIndex: number, newName: string) => {
   projectData[featureIndex].name = newName;
 }
 
-export const deleteFeature = (featureIndex: number) => {
+export const deleteFeature = (featureId: number) => {
+  const featureIndex = projectData.findIndex(feature => feature.id === featureId);
   projectData.splice(featureIndex, 1);
 }
 

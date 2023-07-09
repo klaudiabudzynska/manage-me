@@ -35,25 +35,24 @@ export class FeaturesComponent {
     this.updatedFeatureName = '';
   }
 
-  handleEditStart(featureName: string, e: Event) {
+  handleEditStart(featureId: number, e: Event) {
     e.stopPropagation();
-    this.editedFeatureIndex = this.features.findIndex(globalFeature => globalFeature.name === featureName);
+    this.editedFeatureIndex = this.features.findIndex(globalFeature => globalFeature.id === featureId);
     this.updatedFeatureName = this.features[this.editedFeatureIndex].name;
   }
 
-  handleDeleteStart(featureName: string, e: Event) {
+  handleDeleteStart(featureId: number, e: Event) {
     e.stopPropagation();
     if (this.editedFeatureIndex !== -1) {
       return;
     }
 
-    const featureIndex = this.features.findIndex(globalFeature => globalFeature.name === featureName);
-    deleteFeature(featureIndex);
+    deleteFeature(featureId);
     this.features = getProjectData();
   }
 
-  handleToggleFeature(featureName: string) {
-    const featureIndex = this.features.findIndex(globalFeature => globalFeature.name === featureName);
+  handleToggleFeature(featureId: number) {
+    const featureIndex = this.features.findIndex(globalFeature => globalFeature.id === featureId);
     this.features[featureIndex].expanded = !this.features[featureIndex].expanded;
   }
 }
