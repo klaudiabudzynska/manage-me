@@ -1,3 +1,5 @@
+import {retry} from "rxjs";
+
 export enum STATUS {
 'ToDo',
 'Doing',
@@ -11,11 +13,12 @@ export interface Task {
   description: string,
 }
 
-interface Feature {
+export interface Feature {
   id: number,
   name: string,
+  status: STATUS,
   expanded: boolean,
-  tasks?: Task[],
+  tasks: Task[],
 }
 
 const tasks: Task[] = [
@@ -82,13 +85,13 @@ const tasks: Task[] = [
   {
     id: 11,
     name: 'fdfsdf',
-    status: STATUS.Doing,
+    status: STATUS.Done,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
   {
     id: 12,
     name: 'fdsfsdfsd',
-    status: STATUS.ToDo,
+    status: STATUS.Done,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
   {
@@ -121,6 +124,7 @@ const projectData: Feature[] = [
   {
     id: 1,
     name: 'Navigation links',
+    status: STATUS.Doing,
     expanded: false,
     tasks: [
       tasks[0],
@@ -132,6 +136,7 @@ const projectData: Feature[] = [
   {
     id: 2,
     name: 'User database',
+    status: STATUS.Doing,
     expanded: false,
     tasks: [
       tasks[4],
@@ -143,6 +148,7 @@ const projectData: Feature[] = [
   {
     id: 3,
     name: 'Components communication',
+    status: STATUS.Done,
     expanded: false,
     tasks: [
       tasks[8],
@@ -154,6 +160,7 @@ const projectData: Feature[] = [
   {
     id: 4,
     name: 'Optimisation',
+    status: STATUS.Doing,
     expanded: false,
     tasks: [
       tasks[12],
@@ -177,7 +184,9 @@ export const addNewFeature = (featureName: string) => {
   projectData.push({
     id: new Date().getTime(),
     name: featureName,
-    expanded: false
+    status: STATUS.ToDo,
+    expanded: false,
+    tasks: [],
   });
 }
 
@@ -187,4 +196,12 @@ export const getProjectData = () => {
 
 export const getTasks = () => {
   return tasks;
+}
+
+const isTaskInFeature = (taskId: number, feature: Feature) => !!feature?.tasks.some(task => task.id === taskId)
+
+export const getFeatureOfTask = (taskId: number) => {
+  return projectData.find(feature => {
+    return isTaskInFeature(taskId, feature);
+  });
 }

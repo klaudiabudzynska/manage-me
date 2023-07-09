@@ -14,7 +14,10 @@
     <div class="project__features">
       <div *ngFor="let feature of features" class="feature">
         <div class="feature__data" (click)="handleToggleFeature(feature.id)">
-          {{feature.name}}
+          <div class="feature-info">
+            {{feature.name}}
+            <app-status-label [status]="feature.status" class="feature-status"></app-status-label>
+          </div>
           <div>
             <fa-icon class="feature__operation" [icon]="faPen" (click)="handleEditStart(feature.id, $event)"></fa-icon>
             <fa-icon class="feature__operation" [icon]="faTrash" (click)="handleDeleteStart(feature.id, $event)"></fa-icon>
@@ -26,7 +29,10 @@
           'feature-tasks--hidden': !feature.expanded
         }">
           {{task.name}}
-          <app-user-miniature></app-user-miniature>
+          <div class="task__data">
+            <app-user-miniature class="task__assignee"></app-user-miniature>
+            <app-status-label [status]="task.status"></app-status-label>
+          </div>
         </a>
       </div>
     </div>

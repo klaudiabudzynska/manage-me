@@ -8,7 +8,6 @@ import {getTasks, STATUS} from "../utils/projectData";
 })
 export class TasksComponent {
   tasks = getTasks();
-  status = STATUS;
   boardColumns = [
     {
       name: 'To Do',

@@ -1,8 +1,14 @@
 <app-container *ngIf="task" [title]="task.name">
   <fa-icon class="operation" [icon]="faPen" (click)="handleEditStart()"></fa-icon>
   <fa-icon class="operation" [icon]="faTrash" (click)="handleDelete()"></fa-icon>
-  <app-user-miniature></app-user-miniature>
-  <span class="task-status">{{status}}</span>
+  <p *ngIf="feature" class="feature">
+    <span class="feature__name">Feature: {{feature.name}}</span>
+    <app-status-label [status]="feature.status"></app-status-label>
+  </p>
+  <div class="info">
+    <app-user-miniature class="task-assignee"></app-user-miniature>
+    <app-status-label [status]="task.status"></app-status-label>
+  </div>
   <p>{{task.description}}</p>
 </app-container>
 <app-container *ngIf="!task" title="NotFound">

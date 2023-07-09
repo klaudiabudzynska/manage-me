@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
-import {getProjectData, getTasks, STATUS, Task} from "../utils/projectData";
+import {Feature, getFeatureOfTask, getTasks, STATUS, Task} from "../utils/projectData";
 import {faPen, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -11,7 +11,7 @@ import {faPen, faTrash} from "@fortawesome/free-solid-svg-icons";
 export class TaskComponent {
   @Input() queryParams?: Params | null;
   task: Task | undefined;
-  status: string;
+  feature: Feature | undefined;
 
   protected readonly faPen = faPen;
   protected readonly faTrash = faTrash;
@@ -23,19 +23,14 @@ export class TaskComponent {
       .subscribe(params => {
         this.task = getTasks().find(task => task.id === parseInt(params['id']));
 
-        if (this.task) {
-          switch (this.task.status) {
-            case STATUS.ToDo:
-              this.status = 'To do';
-              break;
-            case STATUS.Doing:
-              this.status = 'Doing';
-              break;
-            case STATUS.Done:
-              this.status = 'Done';
-              break;
-          }
+        if (!this.task) {
+          return;
         }
+
+        console.log(this.task.status);
+        this.feature = getFeatureOfTask(this.task.id);
+
+        console.log(this.feature?.status);
       }
     );
   }

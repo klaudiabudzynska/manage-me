@@ -10,7 +10,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TasksComponent } from './tasks/tasks.component';
 import { ContainerComponent } from './container/container.component';
 import { TaskComponent } from './task/task.component';
-import { UserMiniatureComponent } from './user-miniature/user-miniature.component'
+import { UserMiniatureComponent } from './user-miniature/user-miniature.component';
+import { StatusLabelComponent } from './status-label/status-label.component'
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UserMiniatureComponent } from './user-miniature/user-miniature.componen
     ContainerComponent,
     TaskComponent,
     UserMiniatureComponent,
+    StatusLabelComponent,
   ],
   imports: [
     BrowserModule,

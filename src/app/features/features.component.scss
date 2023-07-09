@@ -28,6 +28,15 @@
         display: flex;
         justify-content: space-between;
         padding: 10px 0;
+
+        .feature-info {
+          align-items: center;
+          display: flex;
+        }
+
+        .feature-status {
+          margin-left: 10px;
+        }
       }
 
       &__operation {
@@ -45,6 +54,17 @@
 
         &--hidden {
           display: none;
+        }
+
+        .task{
+          &__data {
+            align-items: center;
+            display: flex;
+          }
+
+          &__assignee {
+            margin-right: 15px;
+          }
         }
       }
     }

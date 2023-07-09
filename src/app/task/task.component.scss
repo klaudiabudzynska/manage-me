@@ -1,12 +1,21 @@
-.task-status {
-  background: #43a984;
-  color: #fefefe;
-  display: block;
-  margin: 10px 0;
-  padding: 5px 10px;
-  width: fit-content;
-}
-
 .operation {
   margin: 5px 15px 0 0;
+}
+
+.feature {
+  align-items: center;
+  display: flex;
+
+  &__name {
+    margin-right: 5px;
+  }
+}
+
+.info {
+  align-items: center;
+  display: flex;
+}
+
+.task-assignee {
+  margin-right: 10px;
 }
