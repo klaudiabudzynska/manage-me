@@ -1,3 +1,5 @@
 <app-container title="Tasks">
-  <div>abc</div>
+  <div *ngFor="let task of tasks">
+    {{task.name}}
+  </div>
 </app-container>
