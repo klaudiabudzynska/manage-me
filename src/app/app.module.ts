@@ -12,6 +12,7 @@ import { ContainerComponent } from './container/container.component';
 import { TaskComponent } from './task/task.component';
 import { UserMiniatureComponent } from './user-miniature/user-miniature.component';
 import { StatusLabelComponent } from './status-label/status-label.component'
+import {ProjectDataService} from "./project-data.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { StatusLabelComponent } from './status-label/status-label.component'
     FormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [ProjectDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

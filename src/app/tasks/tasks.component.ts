@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import {getTasks, STATUS} from "../utils/projectData";
+import {ProjectDataService, STATUS, Task} from "../project-data.service";
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss']
+  styleUrls: ['./tasks.component.scss'],
+  providers: [ProjectDataService]
 })
 export class TasksComponent {
-  tasks = getTasks();
+  tasks: Task[];
   boardColumns = [
     {
       name: 'To Do',
@@ -22,4 +23,8 @@ export class TasksComponent {
       status: STATUS.Done
     },
   ]
+
+  constructor(private projectDataService: ProjectDataService) {
+    this.tasks = projectDataService.getTasks();
+  }
 }

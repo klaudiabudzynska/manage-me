@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { faChevronUp, faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
-import {addNewFeature, deleteFeature, editFeatureName, getProjectData} from "../utils/projectData";
+import {Feature, ProjectDataService} from "../project-data.service";
 
 @Component({
   selector: 'app-features',
   templateUrl: './features.component.html',
-  styleUrls: ['./features.component.scss']
+  styleUrls: ['./features.component.scss'],
+  providers: [ProjectDataService]
 })
 export class FeaturesComponent {
-  features = getProjectData();
+  features: Feature[];
   newFeatureName: string;
   updatedFeatureName: string;
   editedFeatureIndex: number = -1;
@@ -16,17 +17,21 @@ export class FeaturesComponent {
   protected readonly faTrash = faTrash;
   protected readonly faPen = faPen;
 
+  constructor(private projectDataService: ProjectDataService) {
+    this.features = projectDataService.getProjectData()
+  }
+
   handleNewFeatureSave() {
     if (this.newFeatureName?.length > 0) {
-      addNewFeature(this.newFeatureName);
-      this.features = getProjectData();
+      this.projectDataService.addNewFeature(this.newFeatureName);
+      this.features = this.projectDataService.getProjectData();
       this.newFeatureName = '';
     }
   };
 
   handleFeatureEdit() {
-    editFeatureName(this.editedFeatureIndex, this.updatedFeatureName);
-    this.features = getProjectData();
+    this.projectDataService.editFeatureName(this.editedFeatureIndex, this.updatedFeatureName);
+    this.features = this.projectDataService.getProjectData();
     this.handleFeatureEditCancel();
   }
 
@@ -47,8 +52,8 @@ export class FeaturesComponent {
       return;
     }
 
-    deleteFeature(featureId);
-    this.features = getProjectData();
+    this.projectDataService.deleteFeature(featureId);
+    this.features = this.projectDataService.getProjectData();
   }
 
   handleToggleFeature(featureId: number) {

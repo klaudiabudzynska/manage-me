@@ -1,12 +1,13 @@
 import {Component, Input} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
-import {Feature, getFeatureOfTask, getTasks, STATUS, Task} from "../utils/projectData";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {faPen, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {ProjectDataService, Task, Feature} from "../project-data.service";
 
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss']
+  styleUrls: ['./task.component.scss'],
+  providers: [ProjectDataService]
 })
 export class TaskComponent {
   @Input() queryParams?: Params | null;
@@ -16,21 +17,18 @@ export class TaskComponent {
   protected readonly faPen = faPen;
   protected readonly faTrash = faTrash;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router, private projectDataService: ProjectDataService) { }
 
   ngOnInit() {
     this.route.queryParams
       .subscribe(params => {
-        this.task = getTasks().find(task => task.id === parseInt(params['id']));
+        this.task = this.projectDataService.getTasks().find(task => task.id === parseInt(params['id']));
 
         if (!this.task) {
           return;
         }
 
-        console.log(this.task.status);
-        this.feature = getFeatureOfTask(this.task.id);
-
-        console.log(this.feature?.status);
+        this.feature = this.projectDataService.getFeatureOfTask(this.task.id);
       }
     );
   }
@@ -40,6 +38,11 @@ export class TaskComponent {
   }
 
   handleDelete() {
+    if (!this.task) {
+      return;
+    }
 
+    this.projectDataService.deleteTask(this.task.id);
+    this.router.navigateByUrl('/tasks-list');
   }
 }

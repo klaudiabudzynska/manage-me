@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {STATUS} from "../utils/projectData";
+import {STATUS} from "../project-data.service";
 
 @Component({
   selector: 'app-status-label',
@@ -15,7 +15,6 @@ export class StatusLabelComponent {
   }
 
   setStatus() {
-    console.log(this.status);
     switch (this.status) {
       case STATUS.ToDo:
         return this.statusName = 'To do';
