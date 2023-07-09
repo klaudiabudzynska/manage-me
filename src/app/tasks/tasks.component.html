@@ -1,5 +1,50 @@
 <app-container title="Tasks">
-  <div *ngFor="let task of tasks">
-    {{task.name}}
+  <div class="board">
+    <div class="board__column">
+      <h2>To Do</h2>
+      <ng-container *ngFor="let task of tasks">
+        <ng-container *ngIf="task.status === status.ToDo">
+          <div class="task">
+            <p class="task__name">{{task.name}}</p>
+
+            <div class="user">
+              <div class="profile-picture">JD</div>
+              <p class="user-name">John Doe</p>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="board__column">
+      <h2>Doing</h2>
+      <ng-container *ngFor="let task of tasks">
+        <ng-container *ngIf="task.status === status.Doing">
+          <div class="task">
+            <p class="task__name">{{task.name}}</p>
+
+            <div class="user">
+              <div class="profile-picture">JD</div>
+              <p class="user-name">John Doe</p>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="board__column">
+      <h2>Done</h2>
+      <ng-container *ngFor="let task of tasks">
+        <ng-container *ngIf="task.status === status.Done">
+          <div class="task">
+            <p class="task__name">{{task.name}}</p>
+
+            <div class="user">
+              <div class="profile-picture">JD</div>
+              <p class="user-name">John Doe</p>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
   </div>
+
 </app-container>

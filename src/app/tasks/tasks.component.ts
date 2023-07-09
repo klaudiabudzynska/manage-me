@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {getProjectData, getTasks} from "../utils/projectData";
+import {getProjectData, getTasks, STATUS} from "../utils/projectData";
 
 @Component({
   selector: 'app-tasks',
@@ -8,4 +8,5 @@ import {getProjectData, getTasks} from "../utils/projectData";
 })
 export class TasksComponent {
   tasks = getTasks();
+  status = STATUS;
 }
