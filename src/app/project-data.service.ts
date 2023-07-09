@@ -232,4 +232,8 @@ export class ProjectDataService {
 
     this.updateFeatureStatus(this.projectData[featureIndex].id);
   }
+
+  updateTask (taskData: Task, featureId: number | undefined) {
+
+  }
 }

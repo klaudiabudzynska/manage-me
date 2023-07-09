@@ -1,0 +1,18 @@
+<app-container>
+  <p>Name</p>
+  <input [(ngModel)]="newTaskName" />
+  <p>Status</p>
+  <select [(ngModel)]="newStatus">
+    <option [ngValue]="statuses.ToDo">To do</option>
+    <option [ngValue]="statuses.Doing">Doing</option>
+    <option [ngValue]="statuses.Done">Done</option>
+  </select>
+  <p>Feature</p>
+  <select [(ngModel)]="newFeature">
+    <option *ngFor="let feature of features" [ngValue]="feature.id">{{feature.name}}</option>
+  </select>
+  <p>Description</p>
+  <textarea [(ngModel)]="newDescription"></textarea>
+  <button (click)="handleSave">Save</button>
+</app-container>
+

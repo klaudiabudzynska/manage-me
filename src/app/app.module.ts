@@ -13,6 +13,7 @@ import { TaskComponent } from './task/task.component';
 import { UserMiniatureComponent } from './user-miniature/user-miniature.component';
 import { StatusLabelComponent } from './status-label/status-label.component'
 import {ProjectDataService} from "./project-data.service";
+import { TaskOperationComponent } from './task-operation/task-operation.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {ProjectDataService} from "./project-data.service";
     TaskComponent,
     UserMiniatureComponent,
     StatusLabelComponent,
+    TaskOperationComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,8 @@ import {ProjectDataService} from "./project-data.service";
       {path: 'features-list', component: FeaturesComponent},
       {path: 'tasks-list', component: TasksComponent},
       {path: 'task', component: TaskComponent},
+      {path: 'add-task', component: TaskOperationComponent},
+      {path: 'edit-task', component: TaskOperationComponent},
     ]),
     FormsModule,
     FontAwesomeModule

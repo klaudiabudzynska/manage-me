@@ -34,7 +34,11 @@ export class TaskComponent {
   }
 
   handleEditStart() {
+    if (!this.task) {
+      return;
+    }
 
+    this.router.navigateByUrl(`/edit-task?id=${this.task.id}`);
   }
 
   handleDelete() {
