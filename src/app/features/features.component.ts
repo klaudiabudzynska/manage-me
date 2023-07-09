@@ -78,6 +78,15 @@ export class FeaturesComponent {
     this.updatedFeatureName = this.features[this.editedFeatureIndex].name;
   }
 
+  handleDeleteStart(featureName: string) {
+    if (this.editedFeatureIndex !== -1) {
+      return;
+    }
+
+    const featureIndex = this.features.findIndex(globalFeature => globalFeature.name === featureName);
+    this.features.splice(featureIndex, 1);
+  }
+
   handleToggleFeature(featureName: string) {
     const featureIndex = this.features.findIndex(globalFeature => globalFeature.name === featureName);
     this.features[featureIndex].expanded = !this.features[featureIndex].expanded;
