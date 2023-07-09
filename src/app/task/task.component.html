@@ -1,6 +1,7 @@
 <app-container *ngIf="task" [title]="task.name">
   <fa-icon class="operation" [icon]="faPen" (click)="handleEditStart()"></fa-icon>
   <fa-icon class="operation" [icon]="faTrash" (click)="handleDelete()"></fa-icon>
+  <app-user-miniature></app-user-miniature>
   <span class="task-status">{{status}}</span>
   <p>{{task.description}}</p>
 </app-container>

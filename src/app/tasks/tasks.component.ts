@@ -9,4 +9,18 @@ import {getTasks, STATUS} from "../utils/projectData";
 export class TasksComponent {
   tasks = getTasks();
   status = STATUS;
+  boardColumns = [
+    {
+      name: 'To Do',
+      status: STATUS.ToDo
+    },
+    {
+      name: 'Doing',
+      status: STATUS.Doing
+    },
+    {
+      name: 'Done',
+      status: STATUS.Done
+    },
+  ]
 }

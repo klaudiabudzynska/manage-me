@@ -1,46 +1,12 @@
 <app-container title="Tasks">
   <div class="board">
-    <div class="board__column">
-      <h2>To Do</h2>
+    <div *ngFor="let boardColumn of boardColumns" class="board__column">
+      <h2>{{boardColumn.name}}</h2>
       <ng-container *ngFor="let task of tasks">
-        <ng-container *ngIf="task.status === status.ToDo">
+        <ng-container *ngIf="task.status === boardColumn.status">
           <a class="task" href="{{'/task?id=' + task.id}}">
             <p class="task__name">{{task.name}}</p>
-
-            <div class="user">
-              <div class="profile-picture">JD</div>
-              <p class="user-name">John Doe</p>
-            </div>
-          </a>
-        </ng-container>
-      </ng-container>
-    </div>
-    <div class="board__column">
-      <h2>Doing</h2>
-      <ng-container *ngFor="let task of tasks">
-        <ng-container *ngIf="task.status === status.Doing">
-          <a class="task" href="{{'/task?id=' + task.id}}">
-            <p class="task__name">{{task.name}}</p>
-
-            <div class="user">
-              <div class="profile-picture">JD</div>
-              <p class="user-name">John Doe</p>
-            </div>
-          </a>
-        </ng-container>
-      </ng-container>
-    </div>
-    <div class="board__column">
-      <h2>Done</h2>
-      <ng-container *ngFor="let task of tasks">
-        <ng-container *ngIf="task.status === status.Done">
-          <a class="task" href="{{'/task?id=' + task.id}}">
-            <p class="task__name">{{task.name}}</p>
-
-            <div class="user">
-              <div class="profile-picture">JD</div>
-              <p class="user-name">John Doe</p>
-            </div>
+            <app-user-miniature></app-user-miniature>
           </a>
         </ng-container>
       </ng-container>

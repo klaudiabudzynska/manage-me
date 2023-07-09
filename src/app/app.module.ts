@@ -9,7 +9,8 @@ import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TasksComponent } from './tasks/tasks.component';
 import { ContainerComponent } from './container/container.component';
-import { TaskComponent } from './task/task.component'
+import { TaskComponent } from './task/task.component';
+import { UserMiniatureComponent } from './user-miniature/user-miniature.component'
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TaskComponent } from './task/task.component'
     TasksComponent,
     ContainerComponent,
     TaskComponent,
+    UserMiniatureComponent,
   ],
   imports: [
     BrowserModule,
