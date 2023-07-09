@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp, faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-features',
@@ -49,15 +49,34 @@ export class FeaturesComponent {
       ]
     }
   ];
-  newFeature: string;
+  newFeatureName: string;
+  updatedFeatureName: string;
+  editedFeatureIndex: number = -1;
   faChevronUp = faChevronUp;
+  faTrash = faTrash;
+  faPen = faPen;
 
   handleNewFeatureSave() {
-    if (this.newFeature?.length > 0) {
-      this.features.push({name: this.newFeature, expanded: false});
-      this.newFeature = '';
+    if (this.newFeatureName?.length > 0) {
+      this.features.push({name: this.newFeatureName, expanded: false});
+      this.newFeatureName = '';
     }
   };
+
+  handleFeatureEdit() {
+    this.features[this.editedFeatureIndex].name = this.updatedFeatureName;
+    this.handleFeatureEditCancel();
+  }
+
+  handleFeatureEditCancel() {
+    this.editedFeatureIndex = -1;
+    this.updatedFeatureName = '';
+  }
+
+  handleEditStart(featureName: string) {
+    this.editedFeatureIndex = this.features.findIndex(globalFeature => globalFeature.name === featureName);
+    this.updatedFeatureName = this.features[this.editedFeatureIndex].name;
+  }
 
   handleToggleFeature(featureName: string) {
     const featureIndex = this.features.findIndex(globalFeature => globalFeature.name === featureName);

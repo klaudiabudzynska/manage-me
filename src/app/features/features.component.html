@@ -4,15 +4,23 @@
   <div class="project">
     <h2 class="project__title">Project 1</h2>
 
-    <input class="new-feature" [(ngModel)]="newFeature" />
+    <input class="new-feature" [(ngModel)]="newFeatureName" />
     <button class="button" (click)="handleNewFeatureSave()">Add</button>
+
+    <div *ngIf="editedFeatureIndex !== -1" class="feature-edit">
+      <input class="new-feature" [(ngModel)]="updatedFeatureName" />
+      <button class="button" (click)="handleFeatureEdit()">Edit</button>
+      <button class="button" (click)="handleFeatureEditCancel()">Cancel</button>
+    </div>
 
     <div class="project__features">
       <div *ngFor="let feature of features" class="feature">
         <div class="feature__data" (click)="handleToggleFeature(feature.name)">
           {{feature.name}}
           <div>
-            <fa-icon class="feature__toggle" [icon]="faChevronUp" [rotate]="feature.expanded ? undefined : 180"></fa-icon>
+            <fa-icon class="feature__operation" [icon]="faPen" (click)="handleEditStart(feature.name)"></fa-icon>
+            <fa-icon class="feature__operation" [icon]="faTrash"></fa-icon>
+            <fa-icon class="feature__operation" [icon]="faChevronUp" [rotate]="feature.expanded ? undefined : 180"></fa-icon>
           </div>
         </div>
         <div *ngFor="let task of feature.tasks" [ngClass]="{'tasks-hidden': !feature.expanded}">
