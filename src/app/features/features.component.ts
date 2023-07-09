@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { faChevronUp, faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
+import {addNewFeature, deleteFeature, editFeatureName, getProjectData} from "../utils/projectData";
 
 @Component({
   selector: 'app-features',
@@ -7,48 +8,7 @@ import { faChevronUp, faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./features.component.scss']
 })
 export class FeaturesComponent {
-  features: {name: string, expanded: boolean, tasks?: string[]}[] = [
-    {
-      name: 'Navigation links',
-      expanded: false,
-      tasks: [
-        'abc',
-        'cbd',
-        'fdfsdf',
-        'fdsfsdfsd',
-      ]
-    },
-    {
-      name: 'User database',
-      expanded: false,
-      tasks: [
-        'abc',
-        'fdfsdf',
-        'cbd',
-        'fdsfsdfsd',
-      ]
-    },
-    {
-      name: 'Components communication',
-      expanded: false,
-      tasks: [
-        'fdsfsdfsd',
-        'abc',
-        'cbd',
-        'fdfsdf',
-      ]
-    },
-    {
-      name: 'Optimisation',
-      expanded: false,
-      tasks: [
-        'abc',
-        'fdfsdf',
-        'fdsfsdfsd',
-        'cbd',
-      ]
-    }
-  ];
+  features = getProjectData();
   newFeatureName: string;
   updatedFeatureName: string;
   editedFeatureIndex: number = -1;
@@ -58,13 +18,15 @@ export class FeaturesComponent {
 
   handleNewFeatureSave() {
     if (this.newFeatureName?.length > 0) {
-      this.features.push({name: this.newFeatureName, expanded: false});
+      addNewFeature(this.newFeatureName);
+      this.features = getProjectData();
       this.newFeatureName = '';
     }
   };
 
   handleFeatureEdit() {
-    this.features[this.editedFeatureIndex].name = this.updatedFeatureName;
+    editFeatureName(this.editedFeatureIndex, this.updatedFeatureName);
+    this.features = getProjectData();
     this.handleFeatureEditCancel();
   }
 
@@ -73,18 +35,21 @@ export class FeaturesComponent {
     this.updatedFeatureName = '';
   }
 
-  handleEditStart(featureName: string) {
+  handleEditStart(featureName: string, e: Event) {
+    e.stopPropagation();
     this.editedFeatureIndex = this.features.findIndex(globalFeature => globalFeature.name === featureName);
     this.updatedFeatureName = this.features[this.editedFeatureIndex].name;
   }
 
-  handleDeleteStart(featureName: string) {
+  handleDeleteStart(featureName: string, e: Event) {
+    e.stopPropagation();
     if (this.editedFeatureIndex !== -1) {
       return;
     }
 
     const featureIndex = this.features.findIndex(globalFeature => globalFeature.name === featureName);
-    this.features.splice(featureIndex, 1);
+    deleteFeature(featureIndex);
+    this.features = getProjectData();
   }
 
   handleToggleFeature(featureName: string) {

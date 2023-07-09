@@ -16,8 +16,8 @@
         <div class="feature__data" (click)="handleToggleFeature(feature.name)">
           {{feature.name}}
           <div>
-            <fa-icon class="feature__operation" [icon]="faPen" (click)="handleEditStart(feature.name)"></fa-icon>
-            <fa-icon class="feature__operation" [icon]="faTrash" (click)="handleDeleteStart(feature.name)"></fa-icon>
+            <fa-icon class="feature__operation" [icon]="faPen" (click)="handleEditStart(feature.name, $event)"></fa-icon>
+            <fa-icon class="feature__operation" [icon]="faTrash" (click)="handleDeleteStart(feature.name, $event)"></fa-icon>
             <fa-icon class="feature__operation" [icon]="faChevronUp" [rotate]="feature.expanded ? undefined : 180"></fa-icon>
           </div>
         </div>
