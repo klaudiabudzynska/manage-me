@@ -23,7 +23,10 @@
             <fa-icon class="feature__operation" [icon]="faChevronUp" [rotate]="feature.expanded ? undefined : 180"></fa-icon>
           </div>
         </div>
-        <div *ngFor="let task of feature.tasks" [ngClass]="{'tasks-hidden': !feature.expanded}">
+        <div *ngFor="let task of feature.tasks" [ngClass]="{
+          'feature-tasks': true,
+          'feature-tasks--hidden': !feature.expanded
+        }">
           {{task}}
         </div>
       </div>

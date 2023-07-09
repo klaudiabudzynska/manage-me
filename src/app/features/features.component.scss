@@ -38,8 +38,13 @@
           margin-left: 10px;
         }
 
-        .tasks-hidden {
-          display: none;
+        .feature-tasks {
+          border-top: 1px solid #bfbfbf;
+          padding-left: 20px;
+
+          &--hidden {
+            display: none;
+          }
         }
       }
     }
