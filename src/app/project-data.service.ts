@@ -236,4 +236,19 @@ export class ProjectDataService {
   updateTask (taskData: Task, featureId: number | undefined) {
 
   }
+
+  addTask (taskData: Omit<Task, 'id' | 'status'>, featureId: number | undefined) {
+    const newTask = {
+      ...taskData,
+      id: new Date().getTime(),
+      status: STATUS.ToDo
+    };
+
+    this.tasks.push(newTask)
+
+    if (featureId) {
+      const featureIndex = this.projectData.findIndex(feature => feature.id === featureId);
+      this.projectData[featureIndex].tasks.push(newTask)
+    }
+  }
 }

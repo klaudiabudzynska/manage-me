@@ -1,8 +1,8 @@
 <app-container>
   <p>Name</p>
   <input [(ngModel)]="newTaskName" />
-  <p>Status</p>
-  <select [(ngModel)]="newStatus">
+  <p *ngIf="operationType === 1">Status</p>
+  <select *ngIf="operationType === 1" [(ngModel)]="newStatus">
     <option [ngValue]="statuses.ToDo">To do</option>
     <option [ngValue]="statuses.Doing">Doing</option>
     <option [ngValue]="statuses.Done">Done</option>
@@ -13,6 +13,6 @@
   </select>
   <p>Description</p>
   <textarea [(ngModel)]="newDescription"></textarea>
-  <button (click)="handleSave">Save</button>
+  <button (click)="handleSave()">Save</button>
 </app-container>
 
