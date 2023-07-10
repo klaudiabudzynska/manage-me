@@ -1,0 +1,41 @@
+<app-container title="Features">
+  <div class="project">
+    <h2 class="project__title">Project 1</h2>
+
+    <input class="new-feature" [(ngModel)]="newFeatureName" />
+    <button class="button" (click)="handleNewFeatureSave()">Add</button>
+
+    <div *ngIf="editedFeatureIndex !== -1" class="feature-edit">
+      <input class="new-feature" [(ngModel)]="updatedFeatureName" />
+      <button class="button" (click)="handleFeatureEdit()">Edit</button>
+      <button class="button" (click)="handleFeatureEditCancel()">Cancel</button>
+    </div>
+
+    <div class="project__features">
+      <div *ngFor="let feature of features" class="feature">
+        <div class="feature__data" (click)="handleToggleFeature(feature.id)">
+          <div class="feature-info">
+            {{feature.name}}
+            <app-status-label [status]="feature.status" class="feature-status"></app-status-label>
+          </div>
+          <div>
+            <fa-icon class="feature__operation" [icon]="faPen" (click)="handleEditStart(feature.id, $event)"></fa-icon>
+            <fa-icon class="feature__operation" [icon]="faTrash" (click)="handleDeleteStart(feature.id, $event)"></fa-icon>
+            <fa-icon class="feature__operation" [icon]="faChevronUp" [rotate]="feature.expanded ? undefined : 180"></fa-icon>
+          </div>
+        </div>
+        <a *ngFor="let task of feature.tasks" routerLink="/task" [queryParams]="{id: task.id}" [ngClass]="{
+          'feature-tasks': true,
+          'feature-tasks--hidden': !feature.expanded
+        }">
+          {{task.name}}
+          <div class="task__data">
+            <app-user-miniature class="task__assignee"></app-user-miniature>
+            <app-status-label [status]="task.status"></app-status-label>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</app-container>

@@ -1,1 +1,16 @@
-<p>tasks works!</p>
+<app-container title="Tasks">
+  <div class="board">
+    <div *ngFor="let boardColumn of boardColumns" class="board__column">
+      <h2>{{boardColumn.name}}</h2>
+      <ng-container *ngFor="let task of tasks">
+        <ng-container *ngIf="task.status === boardColumn.status">
+          <a class="task" routerLink="/task" [queryParams]="{id: task.id}">
+            <p class="task__name">{{task.name}}</p>
+            <app-user-miniature></app-user-miniature>
+          </a>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+
+</app-container>

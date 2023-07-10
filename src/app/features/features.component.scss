@@ -1,0 +1,93 @@
+:host {
+  width: 100%;
+}
+
+.project {
+  background: #aaa;
+  max-height: 80vh;
+  padding: 20px;
+  overflow-y: auto;
+
+  &__title {
+    margin: 0 0 10px 0;
+  }
+
+  &__features {
+    margin-top: 20px;
+
+    .feature {
+      background: #fefefe;
+      padding: 5px 15px;
+
+      &:nth-child(even) {
+        background: #dcdcdc;
+      }
+
+      &__data {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+
+        .feature-info {
+          align-items: center;
+          display: flex;
+        }
+
+        .feature-status {
+          margin-left: 10px;
+        }
+      }
+
+      &__operation {
+        margin-left: 10px;
+      }
+
+      .feature-tasks {
+        align-items: center;
+        color: #212225;
+        border-top: 1px solid #bfbfbf;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        text-decoration: none;
+
+        &--hidden {
+          display: none;
+        }
+
+        .task{
+          &__data {
+            align-items: center;
+            display: flex;
+          }
+
+          &__assignee {
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.new-feature {
+  border: none;
+  font-size: 16px;
+  margin-right: 20px;
+  padding: 10px 20px;
+}
+
+.feature-edit {
+  margin-top: 20px;
+}
+
+.button {
+  background: #4949df;
+  border: none;
+  color: #fefefe;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 20px;
+  padding: 10px 20px;
+}

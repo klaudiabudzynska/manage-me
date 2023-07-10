@@ -1,0 +1,21 @@
+.operation {
+  margin: 5px 15px 0 0;
+}
+
+.feature {
+  align-items: center;
+  display: flex;
+
+  &__name {
+    margin-right: 5px;
+  }
+}
+
+.info {
+  align-items: center;
+  display: flex;
+}
+
+.task-assignee {
+  margin-right: 10px;
+}
