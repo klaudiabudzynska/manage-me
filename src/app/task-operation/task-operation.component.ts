@@ -49,16 +49,13 @@ export class TaskOperationComponent {
 
     this.route.data
       .subscribe(params => {
-        console.log(params);
         this.operationType = params['type'];
       })
   }
 
   handleSave() {
-    console.log(this.newTaskName, this.operationType, this.operationType === TASK_OPERATION_TYPE.add);
     if (this.newTaskName) {
       if (this.operationType === TASK_OPERATION_TYPE.edit && this.taskId) {
-        console.log('edit');
         this.projectDataService.updateTask({
           id: this.taskId,
           name: this.newTaskName,
@@ -66,7 +63,6 @@ export class TaskOperationComponent {
           description: this.newDescription,
         }, this.newFeature)
       } else if (this.operationType === TASK_OPERATION_TYPE.add) {
-        console.log('add');
         this.projectDataService.addTask({
           name: this.newTaskName,
           description: this.newDescription,

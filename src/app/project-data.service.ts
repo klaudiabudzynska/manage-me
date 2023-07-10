@@ -7,7 +7,7 @@ export enum STATUS {
 }
 export const TASKS_INIT = [
   {
-    id: 0,
+    id: 243234,
     name: 'abc',
     status: STATUS.ToDo,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -234,7 +234,24 @@ export class ProjectDataService {
   }
 
   updateTask (taskData: Task, featureId: number | undefined) {
+    const taskIndex = this.tasks.findIndex(task => task.id === taskData.id);
+    this.tasks[taskIndex] = {
+      ...this.tasks[taskIndex],
+      ...taskData
+    }
 
+    if (featureId) {
+      const currentFeature = this.getFeatureOfTask(taskData.id);
+
+      if (currentFeature) {
+        const currentFeatureIndex = this.projectData.findIndex(feature => feature.id === currentFeature.id);
+        const taskIndexInFeature = this.projectData[currentFeatureIndex].tasks.findIndex(task => task.id === taskIndex);
+        this.projectData[currentFeatureIndex].tasks.splice(taskIndexInFeature, 1);
+      }
+
+      const featureIndex = this.projectData.findIndex(feature => feature.id === featureId);
+      this.projectData[featureIndex].tasks.push(this.tasks[taskIndex]);
+    }
   }
 
   addTask (taskData: Omit<Task, 'id' | 'status'>, featureId: number | undefined) {
